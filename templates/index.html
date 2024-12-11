@@ -1,0 +1,275 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="hero__slider owl-carousel">
+            {% for jewel in jewellery %}
+                <div class="hero__items set-bg" data-setbg='{{ jewel.image.url }}'>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-5 col-lg-7 col-md-8">
+                                <div class="hero__text">
+                                    <h6>{{ jewel.collection.short_description }}</h6>
+                                    <h2>{{ jewel.collection.name }}</h2>
+                                    <p>{{ jewel.collection.description }}</p>
+                                    <a href="#" class="primary-btn">Виж още <i class="fa-solid fa-arrow-right"></i></a>
+                                    <div class="hero__social">
+                                        <a href="https://www.facebook.com/profile.php?id=100090728064345" target="_blank"><i class="fa fa-facebook"></i></a>
+                                        <a href="https://www.instagram.com/melka_jewellery/" target="_blank"><i class="fa fa-instagram"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Banner Section Begin -->
+    <section class="banner spad">
+        <div class="container">
+            <div class="row">
+                {% for col in collection %}
+                    <!-- First Style -->
+                    {% if forloop.counter == 1 %}
+                        <div class="col-lg-7 offset-lg-4">
+                            <div class="banner__item">
+                                <div class="banner__item__pic">
+                                    <img src="{{ col.jewels.image.url }}" alt="{{ col.name }}">
+                                </div>
+                                <div class="banner__item__text">
+                                    <h2>{{ col.caption }}</h2>
+                                    <p>{{ col.short_description }}</p>
+                                    <a href="#">Виж Още</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Second Style -->
+                    {% elif forloop.counter == 2 %}
+                        <div class="col-lg-5">
+                            <div class="banner__item banner__item--middle">
+                                <div class="banner__item__pic">
+                                    <img src="{{ col.jewels.image.url }}" alt="{{ col.name }}">
+                                </div>
+                                <div class="banner__item__text">
+                                    <h2>{{ col.caption }}</h2>
+                                    <p>{{ col.short_description }}</p>
+                                    <a href="#">Виж Още</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Third Style -->
+                    {% elif forloop.counter == 3 %}
+                        <div class="col-lg-7">
+                            <div class="banner__item banner__item--last">
+                                <div class="banner__item__pic">
+                                    <img src="{{ col.jewels.image.url }}" alt="{{ col.name }}">
+                                </div>
+                                <div class="banner__item__text">
+                                    <h2>{{ col.caption }}</h2>
+                                    <p>{{ col.short_description }}</p>
+                                    <a href="#">Виж Още</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- Banner Section End -->
+
+    <!-- Product Section Begin -->
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="filter__controls">
+                        <li class="active" data-filter="*">Best Sellers</li>
+                        <li data-filter=".new-arrivals">New Arrivals</li>
+                        <li data-filter=".hot-sales">Hot Sales</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row product__filter">
+                {% for jewel in jewellery %}
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg" data-setbg="{{ jewel.image.url }}">
+                                <span class="label">New</span>
+                            </div>
+                            <div class="product__item__text">
+                                <h6>{{ jewel.collection.caption }}</h6>
+                                <a href="#" class="add-cart">Разгледай</a>
+                                <div class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <h5>{{ jewel.collection.price }} лв.</h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="{{ jewel.image }}">
+                            <span class="label">New</span>
+                            <ul class="product__hover">
+                                <li><a href="#"><img src="{{ jewel.image }}" alt=""></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>{{ jewel.collection.name }}</h6>
+                            <a href="#" class="add-cart">+ Add To Cart</a>
+                            <div class="rating">
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <h5>{{ jewel.collection.price }}</h5>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="{{ jewel.image }}">
+                            <span class="label">New</span>
+                            <ul class="product__hover">
+                                <li><a href="#"><img src="{{ jewel.image }}" alt=""></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>{{ jewel.collection.name }}</h6>
+                            <a href="#" class="add-cart">+ Add To Cart</a>
+                            <div class="rating">
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <h5>{{ jewel.collection.price }}</h5>
+                            <div class="product__color__select">
+                                <label for="pc-1">
+                                    <input type="radio" id="pc-1">
+                                </label>
+                                <label class="active black" for="pc-2">
+                                    <input type="radio" id="pc-2">
+                                </label>
+                                <label class="grey" for="pc-3">
+                                    <input type="radio" id="pc-3">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                </div>
+            </div>
+    </section>
+    <!-- Product Section End -->
+
+    <!-- Categories Section Begin -->
+    <section class="categories spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="categories__text">
+                        <h2>Лятна <br/> <span>Зимнa</span> <br/>Пролетна</h2>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="categories__hot__deal">
+                        <img src="http://res.cloudinary.com/dez4hj2rr/image/upload/v1733923865/dyglr88ivux7slclyluc.jpg" alt="">
+                        <div class="hot__deal__sticker">
+                            <span>Намалени от</span>
+                            <h5><s>75 лв</s></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 offset-lg-1">
+                    <div class="categories__deal__countdown">
+                        <span>Оферта на седмицата</span>
+                        <h2>Обеци X0-XO</h2>
+                        <p>Направи подарък на близък за теб човек с бижу от Коледната ни колекция "XO-XO"</p>
+                        <div class="categories__deal__countdown__timer" id="countdown">
+                            <div class="cd-item">
+                                <span>99</span>
+                                <p>Days</p>
+                            </div>
+                            <div class="cd-item">
+                                <span>1</span>
+                                <p>Hours</p>
+                            </div>
+                            <div class="cd-item">
+                                <span>1</span>
+                                <p>Minutes</p>
+                            </div>
+                            <div class="cd-item">
+                                <span>1</span>
+                                <p>Seconds</p>
+                            </div>
+                        </div>
+                        <a href="#" class="primary-btn">Пазарувай</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Categories Section End -->
+
+    <!-- Instagram Section Begin -->
+    <section class="instagram spad">
+        <div class="container">
+            {% for jewelry in jewellery %}
+                {% if forloop.counter == 1 %}
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="instagram__pic">
+                                <div class="instagram__pic__item set-bg"
+                                     data-setbg="http://res.cloudinary.com/dez4hj2rr/image/upload/v1733923865/dt3cuviwtg92mf4anawv.jpg"></div>
+                                <div class="instagram__pic__item set-bg"
+                                     data-setbg="http://res.cloudinary.com/dez4hj2rr/image/upload/v1733923865/m7nud14ww3pzpnvxt7i8.jpg"></div>
+                                <div class="instagram__pic__item set-bg"
+                                     data-setbg="http://res.cloudinary.com/dez4hj2rr/image/upload/v1733923865/fa9mekesf4jsuk5xydxi.jpg"></div>
+                                <div class="instagram__pic__item set-bg"
+                                     data-setbg="http://res.cloudinary.com/dez4hj2rr/image/upload/v1733923865/y6en6zwdpazfrggvl6wk.jpg"></div>
+                                <div class="instagram__pic__item set-bg"
+                                     data-setbg="http://res.cloudinary.com/dez4hj2rr/image/upload/v1733923865/dyglr88ivux7slclyluc.jpg"></div>
+                                <div class="instagram__pic__item set-bg"
+                                     data-setbg="http://res.cloudinary.com/dez4hj2rr/image/upload/wngwvv83ic2n504glt2w.jpg"></div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="instagram__text">
+                                <h2>Ръчно изработени бижута</h2>
+                                <p>Ръчно изработените бижута от мъниста са повече от аксесоари – те са израз на индивидуалност и внимание към детайла!</p>
+                                <h3>#HandMade</h3>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+    <!-- Instagram Section End -->
+
+    <!-- Latest Blog Section Begin -->
+    <section class="latest spad">
+        <div class="container"></div>
+    </section>
+    <!-- Latest Blog Section End -->
+    </body>
+
+{% endblock %}

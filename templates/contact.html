@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- Map Begin -->
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13934.20985471806!2d27.901706025146634!3d43.20930028802374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a454751e94eedb%3A0x57ee9fb8a5ea89be!2sCenter%2C%20Varna!5e1!3m2!1sen!2sbg!4v1733938166287!5m2!1sen!2sbg"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <!-- Map End -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="contact__text">
+                        <div class="section-title">
+                            <h2>Контакти</h2>
+                            <div class="socials">
+                                <i class="fa fa-facebook"></i>
+                                <span>Facebook</span>
+                            </div>
+                            <div class="socials">
+                                <i class="fa fa-instagram"></i>
+                                <span>Instagram</span>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>
+                                <h4>Имаш въпрос?</h4>
+                                <p>Можеш да се свържеш с нас като попълниш формата.</p>
+                                <p>Или ни пишеш в Инстаграм или Фейсбук!</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="contact__form">
+                        <form action="" method="post">
+                            <div class="contact-fields">
+                                {{ form.name }}
+                                {{ form.email }}
+                                {{ form.message }}
+                                {% csrf_token %}
+                                <button type="submit" class="site-btn">Изпрати</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- Contact Section End -->
+{% endblock %}
