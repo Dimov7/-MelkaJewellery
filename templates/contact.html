@@ -17,12 +17,13 @@
                         <div class="section-title">
                             <h2>Контакти</h2>
                             <div class="socials">
-                                <i class="fa fa-facebook"></i>
-                                <span>Facebook</span>
+                                <a href="https://www.facebook.com/p/Melka_jewellery-100090728064345/"><i
+                                        class="fa fa-facebook"></i>
+                                    <span>Facebook</span></a>
                             </div>
                             <div class="socials">
-                                <i class="fa fa-instagram"></i>
-                                <span>Instagram</span>
+                                <a href="https://www.instagram.com/melka_jewellery/"><i class="fa fa-instagram"></i>
+                                    <span>Instagram</span></a>
                             </div>
                         </div>
                         <ul>
@@ -36,7 +37,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="contact__form">
-                        <form action="" method="post">
+                        <form method="post">
                             <div class="contact-fields">
                                 {{ form.name }}
                                 {{ form.email }}
@@ -44,10 +45,10 @@
                                 {% csrf_token %}
                                 <button type="submit" class="site-btn">Изпрати</button>
                             </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
     <!-- Contact Section End -->

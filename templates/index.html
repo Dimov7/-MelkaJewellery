@@ -12,7 +12,7 @@
                                     <h6>{{ jewel.collection.short_description }}</h6>
                                     <h2>{{ jewel.collection.name }}</h2>
                                     <p>{{ jewel.collection.description }}</p>
-                                    <a href="#" class="primary-btn">Виж още <i class="fa-solid fa-arrow-right"></i></a>
+                                    <a href="{% url 'product_detail' pk=jewel.pk%}" class="primary-btn">Виж още <i class="fa-solid fa-arrow-right"></i></a>
                                     <div class="hero__social">
                                         <a href="https://www.facebook.com/profile.php?id=100090728064345" target="_blank"><i class="fa fa-facebook"></i></a>
                                         <a href="https://www.instagram.com/melka_jewellery/" target="_blank"><i class="fa fa-instagram"></i></a>
@@ -42,7 +42,7 @@
                                 <div class="banner__item__text">
                                     <h2>{{ col.caption }}</h2>
                                     <p>{{ col.short_description }}</p>
-                                    <a href="#">Виж Още</a>
+                                    <a href="{% url 'product_detail' pk=col.pk%}">Виж Още</a>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                                 <div class="banner__item__text">
                                     <h2>{{ col.caption }}</h2>
                                     <p>{{ col.short_description }}</p>
-                                    <a href="#">Виж Още</a>
+                                    <a href="{% url 'product_detail' pk=col.pk%}">Виж Още</a>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                                 <div class="banner__item__text">
                                     <h2>{{ col.caption }}</h2>
                                     <p>{{ col.short_description }}</p>
-                                    <a href="#">Виж Още</a>
+                                    <a href="{% url 'product_detail' pk=col.pk%}">Виж Още</a>
                                 </div>
                             </div>
                         </div>
@@ -89,22 +89,22 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="filter__controls">
-                        <li class="active" data-filter="*">Best Sellers</li>
-                        <li data-filter=".new-arrivals">New Arrivals</li>
-                        <li data-filter=".hot-sales">Hot Sales</li>
+                        <li class="active" data-filter="*">Най-Продавани</li>
+{#                        <li data-filter=".new-arrivals">Нови</li>#}
+{#                        <li data-filter=".hot-sales">Промоции</li>#}
                     </ul>
                 </div>
             </div>
             <div class="row product__filter">
-                {% for jewel in jewellery %}
+                {% for jewel in jewellery|slice:4 %}
                     <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="{{ jewel.image.url }}">
-                                <span class="label">New</span>
+                                <span class="label">Нови</span>
                             </div>
                             <div class="product__item__text">
                                 <h6>{{ jewel.collection.caption }}</h6>
-                                <a href="#" class="add-cart">Разгледай</a>
+                                <a href="{% url 'product_detail' pk=jewel.pk%}" class="add-cart">Разгледай</a>
                                 <div class="rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -117,65 +117,65 @@
                         </div>
                     </div>
                 {% endfor %}
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="{{ jewel.image }}">
-                            <span class="label">New</span>
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="{{ jewel.image }}" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>{{ jewel.collection.name }}</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5>{{ jewel.collection.price }}</h5>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="{{ jewel.image }}">
-                            <span class="label">New</span>
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="{{ jewel.image }}" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>{{ jewel.collection.name }}</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5>{{ jewel.collection.price }}</h5>
-                            <div class="product__color__select">
-                                <label for="pc-1">
-                                    <input type="radio" id="pc-1">
-                                </label>
-                                <label class="active black" for="pc-2">
-                                    <input type="radio" id="pc-2">
-                                </label>
-                                <label class="grey" for="pc-3">
-                                    <input type="radio" id="pc-3">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                </div>
-            </div>
+{#                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">#}
+{#                    <div class="product__item">#}
+{#                        <div class="product__item__pic set-bg" data-setbg="{{ jewel.image }}">#}
+{#                            <span class="label">Нови</span>#}
+{#                            <ul class="product__hover">#}
+{#                                <li><a href="#"><img src="{{ jewel.image }}" alt=""></a></li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                        <div class="product__item__text">#}
+{#                            <h6>{{ jewel.collection.name }}</h6>#}
+{#                            <a href="#" class="add-cart">+ Add To Cart</a>#}
+{#                            <div class="rating">#}
+{#                                <i class="fa fa-star-o"></i>#}
+{#                                <i class="fa fa-star-o"></i>#}
+{#                                <i class="fa fa-star-o"></i>#}
+{#                                <i class="fa fa-star-o"></i>#}
+{#                                <i class="fa fa-star-o"></i>#}
+{#                            </div>#}
+{#                            <h5>{{ jewel.collection.price }}</h5>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{#                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">#}
+{#                    <div class="product__item">#}
+{#                        <div class="product__item__pic set-bg" data-setbg="{{ jewel.image }}">#}
+{#                            <span class="label">Нови</span>#}
+{#                            <ul class="product__hover">#}
+{#                                <li><a href="#"><img src="{{ jewel.image }}" alt=""></a></li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                        <div class="product__item__text">#}
+{#                            <h6>{{ jewel.collection.name }}</h6>#}
+{#                            <a href="#" class="add-cart">+ Add To Cart</a>#}
+{#                            <div class="rating">#}
+{#                                <i class="fa fa-star-o"></i>#}
+{#                                <i class="fa fa-star-o"></i>#}
+{#                                <i class="fa fa-star-o"></i>#}
+{#                                <i class="fa fa-star-o"></i>#}
+{#                                <i class="fa fa-star-o"></i>#}
+{#                            </div>#}
+{#                            <h5>{{ jewel.collection.price }}</h5>#}
+{#                            <div class="product__color__select">#}
+{#                                <label for="pc-1">#}
+{#                                    <input type="radio" id="pc-1">#}
+{#                                </label>#}
+{#                                <label class="active black" for="pc-2">#}
+{#                                    <input type="radio" id="pc-2">#}
+{#                                </label>#}
+{#                                <label class="grey" for="pc-3">#}
+{#                                    <input type="radio" id="pc-3">#}
+{#                                </label>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">#}
+{#                </div>#}
+{#            </div>#}
     </section>
     <!-- Product Section End -->
 
@@ -220,7 +220,7 @@
                                 <p>Seconds</p>
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">Пазарувай</a>
+                        <a href="{% url 'shop'%}" class="primary-btn">Пазарувай</a>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="d-flex justify-content-center mb-3">
+            <div class="card" style="width: 50rem;">
+                <img src="{{ profile.image.url }}" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Здравей, {{ user.username }}!</h5>
+                    <p class="card-text">{{ profile.description|default_if_none:'' }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    {% if profile.first_name and profile.last_name %}
+                        <li class="list-group-item" aria-disabled="true">
+                            Име: {{ profile }}
+                        </li>
+                    {% endif %}
+                    {% if profile.age %}
+                        <li class="list-group-item disabled" aria-disabled="true">
+                            Години: {{ profile.age }}г.
+                        </li>
+                    {% endif %}
+                </ul>
+                {% if request.user.pk == user.pk %}
+                    <div class="card-body">
+                        <button type="button" class="btn btn-primary"><a
+                                style="color: white"
+                                href="{% url "profile-update" %}">Промени</a>
+                        </button>
+                        <button type="button" class="btn btn-primary"><a
+                                style="color: white"
+                                href="{% url "profile-delete" %}">Изтрий</a>
+                        </button>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

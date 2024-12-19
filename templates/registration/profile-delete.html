@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="container mt-5">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="" class="form-label">Изтриване на профил</label>
+                    <p class="card-text">Сигурен ли си ,че искаш да си изтриеш акаунта?</p>
+                </div>
+                <button type="submit" class="btn btn-primary">Изтрий</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+ 

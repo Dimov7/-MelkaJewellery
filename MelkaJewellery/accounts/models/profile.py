@@ -1,3 +1,4 @@
+from cloudinary.models import CloudinaryField
 from django.contrib.auth import get_user_model
 from django.db import models
 
@@ -28,11 +29,8 @@ class Profile(models.Model):
         null=True,
     )
 
-    height = models.PositiveSmallIntegerField(
-        default=0,
-        blank=True,
-        null=True,
-    )
+    image = CloudinaryField('image', blank=True, null=True)
+
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'.strip()

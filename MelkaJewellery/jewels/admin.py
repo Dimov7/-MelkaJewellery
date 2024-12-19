@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
-
-from .models import Jewels, Collection, CategoryJewel
+from .models import Jewels, Collection, CategoryJewel, SeasonsJewel, CollectionJewel
 
 admin.site.register(Jewels)
 admin.site.register(Collection)
 admin.site.register(CategoryJewel)
+admin.site.register(SeasonsJewel)
+admin.site.register(CollectionJewel)

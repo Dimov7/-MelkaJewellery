@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="container mt-5">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <h2>Create a New Collection</h2>
+                <div class="mb-3">
+                    {{ collection_form.as_p }}
+                </div>
+
+                <h2>Create a New Jewel</h2>
+                <div class="mb-3">
+                    {{ jewel_form.as_p }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Create Jewel and Collection</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

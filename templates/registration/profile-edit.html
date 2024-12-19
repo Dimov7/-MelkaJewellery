@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="container mt-5">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="" class="form-label">First Name</label>
+                    {{ form.first_name.errors }}
+                    {{ form.first_name }}
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Last Name</label>
+                    {{ form.last_name.errors }}
+                    {{ form.last_name }}
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Age</label>
+                    {{ form.age.errors }}
+                    {{ form.age }}
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Profile Image</label>
+                    {{ form.image.errors }}
+                    {{ form.image }}
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

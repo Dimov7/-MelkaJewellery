@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="container-md mt-5">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="" class="form-label">Въведете име</label>
+                    {{ form.username.errors }}
+                    {{ form.username }}
+
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Въведете парола</label>
+                    {{ form.password.errors }}
+                    {{ form.password }}
+                </div>
+                <button type="submit" class="btn btn-primary">Продължи</button>
+            </form>
+            <p>Нямаш профил?</p><p>Създай един от</p><a href="{% url 'register' %}">Тук!</a>
+        </div>
+    </div>
+{% endblock %}

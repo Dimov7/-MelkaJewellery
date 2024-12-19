@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="container mt-5">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <h2>Edit Collection Details</h2>
+                <div class="mb-3">
+                    {{ collection_form.caption.errors }}
+                    <label for="caption" class="form-label">Caption</label>
+                    {{ collection_form.caption }}
+
+                    {{ collection_form.short_description.errors }}
+                    <label for="short_description" class="form-label">Short Description</label>
+                    {{ collection_form.short_description }}
+
+                    {{ collection_form.description.errors }}
+                    <label for="description" class="form-label">Description</label>
+                    {{ collection_form.description }}
+
+                    {{ collection_form.materials_used.errors }}
+                    <label for="materials_used" class="form-label">Materials Used</label>
+                    {{ collection_form.materials_used }}
+
+                    {{ collection_form.price.errors }}
+                    <label for="price" class="form-label">Price</label>
+                    {{ collection_form.price }}
+                </div>
+
+                <h2>Edit Jewel Details</h2>
+                <div class="mb-3">
+                    {{ jewel_form.image.errors }}
+                    <label for="image" class="form-label">Main Image</label>
+                    {{ jewel_form.image }}
+
+                    {{ jewel_form.additional_image_1.errors }}
+                    <label for="additional_image_1" class="form-label">Additional Image 1</label>
+                    {{ jewel_form.additional_image_1 }}
+
+                    {{ jewel_form.additional_image_2.errors }}
+                    <label for="additional_image_2" class="form-label">Additional Image 2</label>
+                    {{ jewel_form.additional_image_2 }}
+
+                    {{ jewel_form.type.errors }}
+                    <label for="type" class="form-label">Type</label>
+                    {{ jewel_form.type }}
+
+                    {{ jewel_form.season_jewel.errors }}
+                    <label for="season_jewel" class="form-label">Season Jewel</label>
+                    {{ jewel_form.season_jewel }}
+
+                    {{ jewel_form.collection_jewel.errors }}
+                    <label for="collection_jewel" class="form-label">Collection Jewel</label>
+                    {{ jewel_form.collection_jewel }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
