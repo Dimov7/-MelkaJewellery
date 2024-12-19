@@ -78,7 +78,7 @@ class AppAccountModelTests(TestCase):
         self.assertTrue(superuser.is_superuser)
 
     def test_user_str_representation(self):
-       
+
         user = AppAccount.objects.create_user(
             username="strtestuser",
             email="strtestuser@example.com",

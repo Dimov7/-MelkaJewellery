@@ -11,9 +11,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 import cloudinary
 from cloudinary import uploader, api
 from django.urls import reverse_lazy
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,12 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$zkh06)v__*l%g@k*j1&o#him&+5b*c6qc-j=m17amhx=w-7cn'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default-secret-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 
 # Application definition
 
@@ -59,8 +59,7 @@ ROOT_URLCONF = 'MelkaJewellery.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,11 +80,11 @@ WSGI_APPLICATION = 'MelkaJewellery.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "finalProject",
-        "USER": "postgres-user",
-        "PASSWORD": "password",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "NAME": os.getenv('POSTGRES_DB', 'finalProject'),
+        "USER": os.getenv('POSTGRES_USER', 'postgres-user'),
+        "PASSWORD": os.getenv('POSTGRES_PASSWORD', 'password'),
+        "HOST": os.getenv('POSTGRES_HOST', '127.0.0.1'),
+        "PORT": os.getenv('POSTGRES_PORT', '5432'),
     }
 }
 
@@ -136,8 +135,7 @@ AUTH_USER_MODEL = 'accounts.AppAccount'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 cloudinary.config(
-    cloud_name='dez4hj2rr',
-    api_key='895471236752467',
-    api_secret='kQGD373tQsqsXIRGm20WTDkRbDc',
-
+    cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME', 'default-cloud-name'),
+    api_key=os.getenv('CLOUDINARY_API_KEY', 'default-api-key'),
+    api_secret=os.getenv('CLOUDINARY_API_SECRET', 'default-api-secret'),
 )
