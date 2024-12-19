@@ -129,6 +129,7 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGOUT_REDIRECT_URL = reverse_lazy('index')
 
+AUTH_USER_MODEL = 'accounts.AppAccount'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
